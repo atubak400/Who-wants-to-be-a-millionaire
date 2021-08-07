@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './app.css'
+import Trivia from './components/Trivia'
 
 function App() {
   const [questionNumber, setQuestionNumber] = useState(1)
@@ -23,7 +24,14 @@ function App() {
 
   return (
     <div className='app'>
-      <div className='main'>main</div>
+      <div className='main'>
+        <div className='top'>
+          <div className='timer'>30</div>
+        </div>
+        <div className='bottom'>
+          <Trivia />
+        </div>
+      </div>
       <div className='pyramid'>
         <ul className='moneyList'>
           {moneyPyramid.map((m) => (
