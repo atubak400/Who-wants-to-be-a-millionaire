@@ -1,14 +1,24 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 
-export default function Trivia() {
+export default function Trivia({
+  data,
+  questionNumber,
+  setQuestionNumber,
+  setTimeOut,
+}) {
+  const [question, setQuestion] = useState(null)
+
+  useEffect(() => {
+    setQuestion(data[questionNumber - 1])
+  }, [data, questionNumber])
+
   return (
     <div className='trivia'>
-      <div className='question'>What's the shortest month of the year</div>
+      <div className='question'>{question?.question}</div>
       <div className='answers'>
-        <div className='answer'>January</div>
-        <div className='answer correct'>February</div>
-        <div className='answer wrong'>August</div>
-        <div className='answer'>April</div>
+        {question?.answers.map((a) => (
+          <div className='answer'>{a.text}</div>
+        ))}
       </div>
     </div>
   )
