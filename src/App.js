@@ -93,6 +93,10 @@ function App() {
     { id: 15, amount: '$ 1.000.000' },
   ].reverse()
 
+  useEffect(() => {
+    setEarned(moneyPyramid.find((m) => m.id === questionNumber - 1).amount)
+  }, [moneyPyramid, questionNumber])
+
   return (
     <div className='app'>
       <div className='main'>
